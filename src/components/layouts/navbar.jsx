@@ -40,6 +40,12 @@ function SharedLayout() {
           >
             Home
           </a>
+          <a
+            href="/contact"
+            className="text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Contact
+          </a>
         </nav>
         <Sheet>
           <SheetTrigger asChild>

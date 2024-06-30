@@ -9,6 +9,7 @@ import {
   Search,
   ShoppingCart,
   Users,
+  Mail,
 } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -50,6 +51,13 @@ function SharedLayout() {
               >
                 <Home className="h-4 w-4" />
                 Home
+              </a>
+              <a
+                href="/contact"
+                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-foreground"
+              >
+                <Mail className="h-4 w-4" />
+                Contact
               </a>
             </nav>
           </div>

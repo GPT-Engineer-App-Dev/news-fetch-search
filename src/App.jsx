@@ -4,6 +4,7 @@ import Index from "./pages/Index.jsx";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Favorites from "./pages/Favorites.jsx";
 import { Toaster } from "@/components/ui/sonner.jsx";
+import Contact from "./pages/Contact.jsx";
 
 import SharedLayout from "./components/layouts/sidebar.jsx"; // Updated to use sidebar layout
 
@@ -19,6 +20,7 @@ function App() {
               <Route path="/" element={<SharedLayout />}>
                 <Route index element={<Index />} />
                 <Route path="/favorites" element={<Favorites />} />
+                <Route path="/contact" element={<Contact />} /> {/* Add this line */}
               </Route>
             </Routes>
           </Router>
