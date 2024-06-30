@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Button } from "@/components/ui/button";
 
 const fetchTopStories = async () => {
   const response = await fetch(
@@ -26,6 +27,19 @@ function Index() {
     queryKey: ["topStories"],
     queryFn: fetchTopStories,
   });
+
+  const [favorites, setFavorites] = useState([]);
+
+  useEffect(() => {
+    const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    setFavorites(storedFavorites);
+  }, []);
+
+  const handleFavorite = (story) => {
+    const updatedFavorites = [...favorites, story];
+    setFavorites(updatedFavorites);
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+  };
 
   const filteredStories = data?.filter((story) =>
     story.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -64,6 +78,7 @@ function Index() {
                   {story.title}
                 </a>
                 <p>{story.score} upvotes</p>
+                <Button onClick={() => handleFavorite(story)}>Favorite</Button>
               </li>
             ))}
           </ul>
